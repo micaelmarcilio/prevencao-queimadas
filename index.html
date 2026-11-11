@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tecnologia para Prevenção e Monitoramento de Queimadas</title>
+  <meta name="description" content="Plataforma comunitária para relatar focos de incêndio, acessar contatos de emergência e aprender a prevenir queimadas. ODS 13.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ===== CABEÇALHO / MENU ===== -->
+  <header class="topo" id="topo">
+    <div class="topo__conteudo">
+      <a href="#inicio" class="marca" aria-label="Início">
+        <span class="marca__icone" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2c1 3.5-1.5 5.5-1.5 8.5 0 1.4.9 2.5 2.2 2.5 1.6 0 2.3-1.4 2.3-3 2.6 2 4 4.6 4 7.2C19 21 15.9 23 12 23s-7-2-7-5.8C5 11.5 11 8.5 12 2z"/></svg>
+        </span>
+        <span class="marca__texto">Alerta<strong>Queimadas</strong></span>
+      </a>
+
+      <button class="menu-botao" id="menu-botao" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="menu" id="menu" aria-label="Navegação principal">
+        <a href="#relatar">Relatar foco</a>
+        <a href="#contatos">Emergência</a>
+        <a href="#prevencao">Prevenção</a>
+        <a href="#tecnologia">Tecnologia</a>
+        <a href="#quiz">Quiz</a>
+        <a href="#avaliacao">Avaliar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="inicio">
+      <div class="brasas" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span><span></span>
+      </div>
+
+      <div class="hero__conteudo">
+        <span class="selo-ods">
+          <strong>ODS 13</strong> Ação contra a mudança global do clima
+        </span>
+        <h1>Tecnologia para Prevenção e Monitoramento de <span class="texto-fogo">Queimadas</span></h1>
+        <p class="hero__sub">Viu fogo ou fumaça? Registre o local e a intensidade, avise as autoridades e ajude a proteger sua comunidade e o meio ambiente.</p>
+
+        <div class="hero__acoes">
+          <a href="#relatar" class="botao botao--fogo">Relatar um foco de incêndio</a>
+          <a href="tel:193" class="botao botao--contorno">
+            Emergência: <strong>193</strong>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero__onda" aria-hidden="true"></div>
+    </section>
+
+    <!-- ===== NÚMEROS / PROBLEMA ===== -->
+    <section class="secao secao--numeros" id="problema">
+      <div class="container">
+        <div class="cabecalho-secao">
+          <span class="etiqueta">Por que isso importa</span>
+          <h2>O fogo também é uma questão climática</h2>
+          <p>Queimadas liberam gás carbônico (CO₂) e fumaça, destroem habitats e pioram a qualidade do ar. Cada foco evitado ou combatido cedo faz diferença para o clima e para a saúde de quem vive por perto.</p>
+        </div>
+
+        <div class="numeros">
+          <article class="numero">
+            <span class="numero__valor" data-contar="35938">0</span>
+            <span class="numero__rotulo">focos de calor no Brasil no 1º semestre de 2024</span>
+          </article>
+          <article class="numero">
+            <span class="numero__valor" data-contar="19277">0</span>
+            <span class="numero__rotulo">focos no 1º semestre de 2025, uma queda de 46,4%</span>
+          </article>
+          <article class="numero">
+            <span class="numero__valor">mai–out</span>
+            <span class="numero__rotulo">período seco, quando o risco de incêndio é maior</span>
+          </article>
+        </div>
+        <p class="fonte">Fonte: INPE, Sistema BDQueimadas, divulgado pelo Ministério do Meio Ambiente (jul. 2025).</p>
+      </div>
+    </section>
+
+    <!-- ===== RELATAR ===== -->
+    <section class="secao" id="relatar">
+      <div class="container container--estreito">
+        <div class="cabecalho-secao">
+          <span class="etiqueta">Relato comunitário</span>
+          <h2>Relatar um foco de incêndio</h2>
+          <p>Preencha em menos de um minuto. No final você pode ligar para os bombeiros, enviar o relato pelo WhatsApp ou copiar o texto.</p>
+        </div>
+
+        <div class="aviso aviso--perigo">
+          <strong>Risco imediato a pessoas, casas ou animais?</strong>
+          Não preencha agora. Ligue <a href="tel:193">193</a> (Corpo de Bombeiros) e se afaste do fogo.
+        </div>
+
+        <form id="form-relato" class="cartao formulario" novalidate>
+
+          <fieldset>
+            <legend><span class="passo">1</span> Onde está o fogo?</legend>
+
+            <label for="localizacao">Endereço ou coordenadas <span class="obrigatorio">*</span></label>
+            <input type="text" id="localizacao" name="localizacao" placeholder="Ex.: Estrada Municipal, km 3, perto da ponte" autocomplete="street-address" required>
+
+            <button type="button" class="botao botao--secundario botao--pequeno" id="btn-geolocalizacao">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
+              Usar minha localização atual
+            </button>
+            <p class="dica" id="geo-status" role="status"></p>
+
+            <label for="referencia">Ponto de referência</label>
+            <input type="text" id="referencia" name="referencia" placeholder="Ex.: atrás da escola, ao lado do posto">
+          </fieldset>
+
+          <fieldset>
+            <legend><span class="passo">2</span> Qual a intensidade do fogo? <span class="obrigatorio">*</span></legend>
+            <div class="intensidades" role="radiogroup">
+              <label class="intensidade intensidade--baixa">
+                <input type="radio" name="intensidade" value="Baixa" required>
+                <span class="intensidade__chamas" aria-hidden="true">🔥</span>
+                <span class="intensidade__nome">Baixa</span>
+                <span class="intensidade__desc">Chamas pequenas, área menor que um quintal, pouca fumaça.</span>
+              </label>
+              <label class="intensidade intensidade--media">
+                <input type="radio" name="intensidade" value="Média">
+                <span class="intensidade__chamas" aria-hidden="true">🔥🔥</span>
+                <span class="intensidade__nome">Média</span>
+                <span class="intensidade__desc">Fogo se espalhando, fumaça visível de longe.</span>
+              </label>
+              <label class="intensidade intensidade--alta">
+                <input type="radio" name="intensidade" value="Alta">
+                <span class="intensidade__chamas" aria-hidden="true">🔥🔥🔥</span>
+                <span class="intensidade__nome">Alta</span>
+                <span class="intensidade__desc">Chamas altas, área grande, fogo fora de controle.</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend><span class="passo">3</span> Mais detalhes</legend>
+
+            <label for="tipo-area">Tipo de área atingida</label>
+            <select id="tipo-area" name="tipo-area">
+              <option value="">Selecione (opcional)</option>
+              <option>Mata / floresta</option>
+              <option>Pasto / plantação</option>
+              <option>Terreno baldio / lote</option>
+              <option>Beira de estrada</option>
+              <option>Área próxima a casas</option>
+              <option>Outro</option>
+            </select>
+
+            <label class="checkbox">
+              <input type="checkbox" id="risco-pessoas" name="risco-pessoas">
+              <span>Há pessoas, casas, animais ou rede elétrica próximos ao fogo</span>
+            </label>
+
+            <label for="descricao">Descrição</label>
+            <textarea id="descricao" name="descricao" rows="3" placeholder="Ex.: fumaça escura, vento forte em direção às casas, começou há 20 minutos"></textarea>
+          </fieldset>
+
+          <div id="mensagem" class="mensagem" role="alert" aria-live="polite"></div>
+
+          <button type="submit" class="botao botao--fogo botao--largo">Gerar relato</button>
+        </form>
+
+        <!-- Resultado do relato -->
+        <div id="resultado" class="cartao resultado" hidden tabindex="-1">
+          <div class="resultado__topo">
+            <span class="resultado__ok" aria-hidden="true">✓</span>
+            <div>
+              <h3>Relato registrado</h3>
+              <p class="resultado__protocolo">Protocolo <strong id="res-protocolo"></strong></p>
+            </div>
+          </div>
+
+          <div id="res-alerta" class="aviso aviso--perigo" hidden>
+            <strong>Esta situação parece grave.</strong> Ligue agora para o <a href="tel:193">193</a>. Os bombeiros precisam saber o quanto antes.
+          </div>
+
+          <p class="resultado__instrucao"><strong>Agora avise quem pode agir.</strong> Este site não envia o relato sozinho: use um dos botões abaixo.</p>
+
+          <pre id="res-texto" class="resultado__texto"></pre>
+
+          <div class="resultado__acoes">
+            <a href="tel:193" class="botao botao--fogo">Ligar para o 193</a>
+            <a href="#" id="btn-whatsapp" class="botao botao--whatsapp" target="_blank" rel="noopener">Enviar pelo WhatsApp</a>
+            <button type="button" id="btn-copiar" class="botao botao--secundario">Copiar texto</button>
+            <a href="#" id="btn-mapa" class="botao botao--secundario" target="_blank" rel="noopener" hidden>Ver no mapa</a>
+          </div>
+          <p class="dica" id="copiar-status" role="status"></p>
+
+          <button type="button" id="btn-novo" class="link-botao">Fazer outro relato</button>
+        </div>
+
+        <!-- Histórico -->
+        <div class="historico" id="historico" hidden>
+          <div class="historico__topo">
+            <h3>Relatos feitos neste aparelho</h3>
+            <button type="button" id="btn-limpar" class="link-botao">Limpar histórico</button>
+          </div>
+          <ul id="lista-relatos" class="lista-relatos"></ul>
+          <p class="dica">Este histórico fica salvo só no seu navegador.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTATOS ===== -->
+    <section class="secao secao--escura" id="contatos">
+      <div class="container">
+        <div class="cabecalho-secao">
+          <span class="etiqueta">Canais oficiais</span>
+          <h2>Contatos de emergência</h2>
+          <p>Ligações gratuitas, de qualquer telefone, inclusive sem crédito. Toque no número para ligar.</p>
+        </div>
+
+        <div class="contatos">
+          <a href="tel:193" class="contato contato--destaque">
+            <span class="contato__numero">193</span>
+            <span class="contato__nome">Corpo de Bombeiros</span>
+            <span class="contato__uso">Incêndio em andamento, resgate, risco a pessoas e casas.</span>
+          </a>
+          <a href="tel:199" class="contato">
+            <span class="contato__numero">199</span>
+            <span class="contato__nome">Defesa Civil</span>
+            <span class="contato__uso">Áreas de risco, desabrigados, apoio à comunidade.</span>
+          </a>
+          <a href="tel:08000618080" class="contato">
+            <span class="contato__numero contato__numero--menor">0800 061 8080</span>
+            <span class="contato__nome">Ibama · Linha Verde</span>
+            <span class="contato__uso">Denúncia de queimada criminosa e dano ambiental.</span>
+          </a>
+          <a href="tel:190" class="contato">
+            <span class="contato__numero">190</span>
+            <span class="contato__nome">Polícia Militar</span>
+            <span class="contato__uso">Flagrante de alguém ateando fogo de propósito.</span>
+          </a>
+          <a href="tel:192" class="contato">
+            <span class="contato__numero">192</span>
+            <span class="contato__nome">SAMU</span>
+            <span class="contato__uso">Queimaduras, falta de ar ou mal-estar por fumaça.</span>
+          </a>
+        </div>
+
+        <div class="dica-ligacao">
+          <h3>O que falar na ligação</h3>
+          <ol>
+            <li><strong>Onde:</strong> endereço, estrada ou ponto de referência.</li>
+            <li><strong>O quê:</strong> tamanho do fogo, cor da fumaça, direção do vento.</li>
+            <li><strong>Quem está em risco:</strong> pessoas, casas, animais, rede elétrica.</li>
+            <li><strong>Seu nome e telefone</strong>, e fique disponível caso liguem de volta.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PREVENÇÃO ===== -->
+    <section class="secao" id="prevencao">
+      <div class="container">
+        <div class="cabecalho-secao">
+          <span class="etiqueta">Conscientização</span>
+          <h2>Como prevenir queimadas</h2>
+          <p>A maioria dos incêndios começa por ação humana. Pequenas atitudes evitam grandes estragos.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <span class="card__icone" aria-hidden="true">🗑️</span>
+            <h3>Não queime lixo nem folhas</h3>
+            <p>Uma faísca levada pelo vento pode atingir a vegetação seca. Prefira a coleta ou a compostagem.</p>
+          </article>
+          <article class="card">
+            <span class="card__icone" aria-hidden="true">🚬</span>
+            <h3>Bituca no lixo, nunca na estrada</h3>
+            <p>Cigarros jogados pela janela do carro estão entre as causas mais comuns de fogo à beira de estradas.</p>
+          </article>
+          <article class="card">
+            <span class="card__icone" aria-hidden="true">🎈</span>
+            <h3>Não solte balões</h3>
+            <p>Soltar balão é crime ambiental (Lei nº 9.605/1998). O balão pode cair aceso sobre matas, casas e fios.</p>
+          </article>
+          <article class="card">
+            <span class="card__icone" aria-hidden="true">🏕️</span>
+            <h3>Fogueira só com cuidado</h3>
+            <p>Evite em dias secos e com vento. Ao terminar, apague com bastante água e terra até não restar brasa.</p>
+          </article>
+          <article class="card">
+            <span class="card__icone" aria-hidden="true">🌾</span>
+            <h3>Aceiros na zona rural</h3>
+            <p>Faixas de terra sem vegetação ao redor de propriedades e cercas impedem que o fogo se espalhe.</p>
+          </article>
+          <article class="card">
+            <span class="card__icone" aria-hidden="true">📣</span>
+            <h3>Denuncie e converse</h3>
+            <p>Viu alguém ateando fogo? Denuncie. Compartilhe o que aprendeu com família e vizinhos.</p>
+          </article>
+        </div>
+
+        <div class="impactos">
+          <h3>Impactos das queimadas</h3>
+          <div class="impactos__lista">
+            <div class="impacto"><strong>Clima</strong><span>Liberam CO₂ e outros gases que aumentam o aquecimento global.</span></div>
+            <div class="impacto"><strong>Saúde</strong><span>A fumaça causa e agrava problemas respiratórios, principalmente em crianças e idosos.</span></div>
+            <div class="impacto"><strong>Natureza</strong><span>Matam animais, destroem habitats e reduzem a biodiversidade.</span></div>
+            <div class="impacto"><strong>Solo e água</strong><span>Empobrecem o solo, causam erosão e afetam nascentes e rios.</span></div>
+          </div>
+        </div>
+
+        <div class="passos-incendio">
+          <h3>Viu um incêndio? Siga estes passos</h3>
+          <ol class="linha-passos">
+            <li><span>1</span><strong>Afaste-se</strong> do fogo e da fumaça, sempre contra o vento.</li>
+            <li><span>2</span><strong>Ligue 193</strong> e passe o local e o tamanho do fogo.</li>
+            <li><span>3</span><strong>Registre o foco</strong> nesta plataforma para guardar as informações.</li>
+            <li><span>4</span><strong>Não tente combater</strong> fogo médio ou alto. Deixe isso com os profissionais.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TECNOLOGIA ===== -->
+    <section class="secao secao--quente" id="tecnologia">
+      <div class="container">
+        <div class="cabecalho-secao">
+          <span class="etiqueta">Monitoramento</span>
+          <h2>Tecnologia contra o fogo</h2>
+          <p>Satélites detectam focos de calor do espaço, mas nem todo foco é visto a tempo. O relato de quem está no local complementa esse monitoramento.</p>
+        </div>
+
+        <div class="fluxo">
+          <div class="fluxo__item">
+            <span class="fluxo__icone" aria-hidden="true">📍</span>
+            <h3>Você relata</h3>
+            <p>Localização (inclusive por GPS), intensidade e detalhes do foco.</p>
+          </div>
+          <span class="fluxo__seta" aria-hidden="true">→</span>
+          <div class="fluxo__item">
+            <span class="fluxo__icone" aria-hidden="true">📝</span>
+            <h3>A plataforma organiza</h3>
+            <p>Gera um protocolo e uma mensagem padronizada com tudo o que os órgãos precisam saber.</p>
+          </div>
+          <span class="fluxo__seta" aria-hidden="true">→</span>
+          <div class="fluxo__item">
+            <span class="fluxo__icone" aria-hidden="true">🚒</span>
+            <h3>Os órgãos agem</h3>
+            <p>Com um toque você liga ou envia o relato para Bombeiros, Defesa Civil ou Ibama.</p>
+          </div>
+        </div>
+
+        <div class="links-monitoramento">
+          <a href="https://terrabrasilis.dpi.inpe.br/queimadas/portal/" target="_blank" rel="noopener" class="link-card">
+            <strong>Programa Queimadas (INPE)</strong>
+            <span>Veja os focos de calor detectados por satélite em todo o Brasil.</span>
+          </a>
+          <a href="https://terrabrasilis.dpi.inpe.br/queimadas/bdqueimadas/" target="_blank" rel="noopener" class="link-card">
+            <strong>BDQueimadas</strong>
+            <span>Mapa interativo com focos por estado, município e bioma.</span>
+          </a>
+          <a href="https://brasil.un.org/pt-br/sdgs/13" target="_blank" rel="noopener" class="link-card">
+            <strong>ODS 13 · ONU Brasil</strong>
+            <span>Conheça as metas de ação contra a mudança global do clima.</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== QUIZ ===== -->
+    <section class="secao" id="quiz">
+      <div class="container container--estreito">
+        <div class="cabecalho-secao">
+          <span class="etiqueta">Teste seus conhecimentos</span>
+          <h2>Quiz rápido</h2>
+          <p>Cinco perguntas sobre prevenção e combate a queimadas.</p>
+        </div>
+
+        <div class="cartao quiz" id="quiz-caixa">
+          <div class="quiz__progresso"><span id="quiz-barra"></span></div>
+          <p class="quiz__contador" id="quiz-contador"></p>
+          <h3 class="quiz__pergunta" id="quiz-pergunta"></h3>
+          <div class="quiz__opcoes" id="quiz-opcoes"></div>
+          <p class="quiz__explicacao" id="quiz-explicacao" hidden></p>
+          <button type="button" class="botao botao--fogo" id="quiz-proxima" hidden>Próxima</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== AVALIAÇÃO ===== -->
+    <section class="secao secao--escura" id="avaliacao">
+      <div class="container container--estreito centro">
+        <span class="etiqueta">Sua opinião</span>
+        <h2>Avalie a plataforma</h2>
+        <p>Responda a um questionário rápido. Sua resposta ajuda a melhorar a ferramenta e a medir o impacto deste projeto na comunidade.</p>
+        <a href="https://forms.cloud.microsoft/r/rfhpTLWMgL" id="link-forms" class="botao botao--fogo botao--grande" target="_blank" rel="noopener">Responder questionário</a>
+        <p class="dica">Leva cerca de 2 minutos · Microsoft Forms</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== RODAPÉ ===== -->
+  <footer class="rodape">
+    <div class="container rodape__conteudo">
+      <div>
+        <p class="rodape__titulo">Tecnologia para Prevenção e Monitoramento de Queimadas</p>
+        <p>Projeto Extensionista · Atividade Extensionista III · UNINTER</p>
+        <p>Desenvolvido por <strong>Micael Luan Marcilio Ferreira</strong> · RU 4764609</p>
+        <p>Comunidade atendida: São Sebastião da Bela Vista (MG)</p>
+      </div>
+      <div class="rodape__ods">
+        <strong>ODS 13</strong>
+        <span>Ação contra a mudança global do clima</span>
+      </div>
+    </div>
+    <p class="rodape__aviso">Plataforma acadêmica de apoio à comunidade. Ela não substitui os canais oficiais. Em emergência, ligue 193.</p>
+  </footer>
+
+  <!-- Botão flutuante de emergência -->
+  <a href="tel:193" class="sos" aria-label="Ligar para os bombeiros, 193">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
+    193
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>
