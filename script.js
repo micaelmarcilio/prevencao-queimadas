@@ -9,6 +9,20 @@ document.addEventListener('DOMContentLoaded', function () {
   const $ = (seletor) => document.querySelector(seletor);
   const CHAVE_RELATOS = 'relatos-queimadas';
 
+  // Endereço do Google Apps Script que grava cada relato na planilha do projeto
+  const URL_PLANILHA = 'https://script.google.com/macros/s/AKfycbwOeBwS0c-OqA2tOmCZTNb2j5PZgQmNtD8wdrQApL8NZQOo8m0eNZzsDP7uFhwgm6jH/exec';
+
+  // Envia o relato para a planilha. Usa text/plain para evitar bloqueio de CORS.
+  function enviarParaPlanilha(relato) {
+    return fetch(URL_PLANILHA, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(relato)
+    })
+      .then(function (resposta) { return resposta.json(); })
+      .then(function (dados) { if (!dados.ok) throw new Error(dados.erro || 'Falha'); return dados; });
+  }
+
   // localStorage pode estar indisponível (modo privado, navegador bloqueado)
   function lerRelatos() {
     try { return JSON.parse(localStorage.getItem(CHAVE_RELATOS)) || []; }
@@ -211,6 +225,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
     exibirResultado(relato);
     renderizarHistorico();
+
+    // Registra o relato na base do projeto (planilha)
+    const statusEnvio = $('#status-envio');
+    statusEnvio.textContent = 'Registrando o relato na base do projeto…';
+    statusEnvio.className = 'status-envio';
+    enviarParaPlanilha(relato)
+      .then(function () {
+        statusEnvio.textContent = '✓ Relato registrado na base do projeto.';
+        statusEnvio.className = 'status-envio ok';
+      })
+      .catch(function () {
+        statusEnvio.textContent = 'Não foi possível registrar na base do projeto (verifique a internet). Use os botões abaixo para avisar as autoridades.';
+        statusEnvio.className = 'status-envio erro';
+      });
   });
 
   function exibirResultado(r) {

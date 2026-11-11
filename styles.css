@@ -344,6 +344,10 @@ img, svg { max-width: 100%; }
 }
 .resultado__protocolo { margin: 0; color: var(--texto-suave); }
 .resultado__instrucao { margin-bottom: .75rem; }
+.status-envio { font-size: .92rem; font-weight: 600; color: var(--texto-suave); margin: -.25rem 0 1.25rem; }
+.status-envio:empty { display: none; }
+.status-envio.ok { color: var(--verde); }
+.status-envio.erro { color: var(--brasa); }
 .resultado__texto {
   white-space: pre-wrap; word-break: break-word;
   font: .92rem/1.55 ui-monospace, "SFMono-Regular", Consolas, monospace;
